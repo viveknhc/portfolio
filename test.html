@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .main {
+            overflow-x: hidden;
+        }
+        .horizontal-sliders {
+            display: flex;
+            flex-wrap: no-wrap;
+            width: 345%;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+        .slide {
+            height: 100vh;
+            width: 100%;
+        }
+        .slide:nth-child(2n) {
+            background-color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="horizontal-sliders">
+            <div class="slide">Red</div>
+            <div class="slide">Blue</div>
+            <div class="slide">Green</div>
+            <div class="slide">Yellow</div>
+            <div class="slide">Brown</div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        let sections = gsap.utils.toArray(".slide");
+
+        gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".horizontal-sliders",
+                pin: ".main",
+                pinSpacing: true,
+                scrub: 1,
+                end: "+=3000",
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -8,7 +8,11 @@ from django.views.generic import TemplateView
 app_name = "web"
 
 urlpatterns = [
-    path("", views.index, name="index"),
-     path('personal-details/', views.personal_details, name='personal-details'),
-     path('add-new/',views.addItem,name='add-new'),
+    path('', views.personal_details, name='personal-details'),
+    path('skill/', views.skill, name='skill'),
+    path('experience/', views.experience, name='experience'),
+    path('education/',views.education,name="education"),
+    path('service/',views.service,name="service"),
+    path('projects/',views.projects,name="projects"),
+    path('add-new/',views.addItem,name='add-new'),
 ]
